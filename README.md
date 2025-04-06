@@ -68,7 +68,7 @@ brew install minio/stable/mc
 
 ##Import MinIO dashboards to Grafana.
 
-###🧩 References
+### References
 - MinIO Official Docs
 
 - MinIO Client (mc) CLI Docs
