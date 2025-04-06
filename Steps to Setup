@@ -1,0 +1,64 @@
+##update server repo
+
+sudo yum update -y
+sudo yum install wget -y
+
+##Download minio release
+
+wget https://dl.min.io/server/minio/release/linux-amd64/minio
+chmod +x minio
+sudo mv minio /usr/local/bin/
+
+##Create user and Directory 
+sudo useradd -r minio-user -s /sbin/nologin
+sudo mkdir /usr/local/share/minio
+sudo mkdir /etc/minio
+
+##change ownership for minio path and configuration path 
+sudo chown minio-user:minio-user /usr/local/share/minio
+sudo chown minio-user:minio-user /etc/minio
+
+
+#create systemd service
+sudo tee /etc/systemd/system/minio.service > /dev/null <<EOF
+[Unit]
+Description=MinIO
+Documentation=https://docs.min.io
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=minio-user
+Group=minio-user
+ExecStart=/usr/local/bin/minio server /usr/local/share/minio --console-address ":9001"
+EnvironmentFile=-/etc/minio/minio.conf
+Restart=always
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+##Configure Username Password 
+
+sudo tee /etc/minio/minio.conf > /dev/null <<EOF
+MINIO_ROOT_USER=minioadmin
+MINIO_ROOT_PASSWORD=minioadmin123
+EOF
+
+sudo chown minio-user:minio-user /etc/minio/minio.conf
+
+##restart the services
+
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable minio
+sudo systemctl start minio
+
+
+
+to set access key secret key 
+
+cat /etc/minio/minio.conf
+MINIO_ROOT_USER=your-access-key
+MINIO_ROOT_PASSWORD=your-secret-key
