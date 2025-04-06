@@ -4,6 +4,9 @@ This repository documents the setup, usage, and maintenance of a **MinIO S3-comp
 
 ---
 
+![jenkinsProcess Output](https://github.com/ssanthosh2k3/MinIO-Bucket-storage-Setup/blob/main/IMG_20250406_183314_793.jpg)
+
+
 ## 📚 Table of Contents
 
 - [Overview](#overview)
@@ -31,6 +34,9 @@ MinIO is a lightweight, high-performance, object storage system with S3 API comp
 - Testing S3 integrations before moving to production
 
 ---
+![jenkinsProcess Output](https://github.com/ssanthosh2k3/MinIO-Bucket-storage-Setup/blob/main/IMG_20250406_183346_059.jpg)
+
+
 
 ## 🧰 System Requirements
 
@@ -41,6 +47,9 @@ MinIO is a lightweight, high-performance, object storage system with S3 API comp
 
 ---
 
+![jenkinsProcess Output](https://github.com/ssanthosh2k3/MinIO-Bucket-storage-Setup/blob/main/IMG_20250406_183241_162.jpg)
+
+
 ## 🔧 Installation
 
 ### ✅ Install MinIO Client (`mc`)
@@ -50,6 +59,9 @@ MinIO is a lightweight, high-performance, object storage system with S3 API comp
 ```bash
 brew install minio/stable/mc
 ```
+
+![jenkinsProcess Output](https://github.com/ssanthosh2k3/MinIO-Bucket-storage-Setup/blob/main/IMG_20250406_183257_612.jpg)
+
 
 ###🔐 Access Control
 - 🔑 Access credentials are managed using internal vaults or CI/CD secrets.
